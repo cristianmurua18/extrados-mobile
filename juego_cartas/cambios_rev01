@@ -1,0 +1,5 @@
+Las entidades siempre van domain, en el feat/home se colocó 
+en data/models cartas. Cartas y torneo son dos entidades/obejtos diferentes, 
+se cambio para que se vea la diferencia y se coloca en data models 
+
+Revisar los TODO: descargar alguna extensión 
