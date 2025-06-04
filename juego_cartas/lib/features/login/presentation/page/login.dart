@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:juego_cartas/commons/routes.dart';
 import 'package:juego_cartas/features/login/presentation/bloc/login/login_bloc.dart';
+import 'package:juego_cartas/features/login/presentation/widgets/login_form.dart';
 import 'package:juego_cartas/features/principal/presentation/page/principal.dart';
 //Importo el paquete de material design para poder usar los widgets de la libreria
 
@@ -29,79 +29,9 @@ class LoginPageState extends State<LoginPage> {
           switch (state) {
             case LoginInitial():
               //REVISAR PARA VER QUE DEBERIA RECIBIR O HACER EL INITIAL Y EL SUCCESS
-              return SafeArea(
-                //El safe area asegura que el contenido no se superponga con la barra de navegacion o la barra de estado
-                child: ListView(
-                  //Aqui puedo poner una lista de widgets
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  children: <Widget>[
-                    const SizedBox(height: 80.0),
-                    Column(
-                      children: <Widget>[
-                        const SizedBox(height: 16.0),
-                        //const Text('LOGIN'),
-                        const Image(
-                          image: AssetImage('android/assets/loggos.png'),
-                          height: 160,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 120.0),
-                    // [Name]
-                    TextField(
-                      controller: _usernameController,
-                      //Aqui es donde se asigna el controlador de texto al campo de texto
-                      decoration: const InputDecoration(
-                        filled: true,
-                        labelText: 'Usuario',
-                      ),
-                    ),
-                    // spacer
-                    const SizedBox(height: 12.0),
-                    // [Password]
-                    TextField(
-                      controller: _passwordController,
-                      //Aqui es donde se asigna el controlador de texto al campo de texto
-                      decoration: const InputDecoration(
-                        //Esto le da un cierto relleno al campo de texto para que quedo mejor visiblemente
-                        filled: true,
-                        labelText: 'Contraseña',
-                      ),
-                      obscureText: true,
-                      //reemplaza automaticamente la entrada que el usuario escribe con viñetas, y es apropiado para contraseñas
-                    ),
-                    OverflowBar(
-                      //Organiza sus elementos secundarios en una fila
-                      //Se encarga del diseño de los botones, los pone en horizonal uno al lado de otro
-                      alignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        //Estos son los dos botones
-                        TextButton(
-                          child: const Text('CANCELAR'),
-                          onPressed: () {
-                            //Usar bloques vacios evita que se inhabiliten los botones
-                            //Luego agrego el comando para borrar el texto de los campos, cuando aprete el boton
-                            _usernameController.clear();
-                            _passwordController.clear();
-                            routerApp.go('/home');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: const Text('INGRESAR'),
-                          onPressed: () {
-                            context.read<LoginBloc>().add(
-                              LoginRequested(
-                                _usernameController.text,
-                                _passwordController.text,
-                              ),
-                            );
-                            //routerApp.go('/principal');
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              return LoginForm(
+                usernameController: _usernameController,
+                passwordController: _passwordController,
               );
             case LoginLoading():
               return const Center(child: CircularProgressIndicator());
