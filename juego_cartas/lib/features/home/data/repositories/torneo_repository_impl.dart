@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:juego_cartas/core/error/failure_base.dart';
 import 'package:juego_cartas/core/network/api_result.dart';
 import 'package:juego_cartas/core/network/api_service.dart';
+import 'package:juego_cartas/features/home/data/models/torneo_model.dart';
 import 'package:juego_cartas/features/home/domain/entities/torneo_entity.dart';
 import 'package:juego_cartas/features/home/domain/repositories/torneo_repository.dart';
 
@@ -25,7 +26,7 @@ class TorneoRepositoryImpl implements TorneoRepository {
 
       if (result.resultType == ResultType.success) {
         final data = result.body as List;
-        final torneos = data.map((json) => Torneo.fromJson(json)).toList();
+        final torneos = data.map((json) => TorneoModel.fromJson(json)).toList();
         //No entiendo la diferencia entre esta y el bloc
         //final torneos = Torneo.fromJson(result.body);
         //Hacer un from map

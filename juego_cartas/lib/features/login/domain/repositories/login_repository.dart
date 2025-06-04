@@ -16,6 +16,5 @@ abstract class LoginRepository {
     String nombreUsuario,
     String contrasena,
   );
-
   //A lo mejor aqui debo pensar en un metodo para poder registrarse al Sistema SignUp
 }
