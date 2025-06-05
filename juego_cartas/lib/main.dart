@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           } else {
             //TODO: hacer un blocbuilder del login
             /*
-              En ese blocListener hayq ue evaluar si hay un inicio de sesion o no
+              En ese blocListener hay que evaluar si hay un inicio de sesion o no
               y segun abrir directo al home o a inicio de sesion
              */
             return Center(child: CircularProgressIndicator());

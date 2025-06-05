@@ -12,7 +12,7 @@ abstract class LoginRepository {
   //Aqui se llama a la API, por eso el Future
 
   //A lo mejor solo pueda devolver un bool, true o false? Pero tambien debo devolver el token
-  Future<Either<Failure, Welcome>> getAutorization(
+  Future<Either<Failure, AutorizacionRespuesta>> getAutorization(
     String nombreUsuario,
     String contrasena,
   );

@@ -28,7 +28,6 @@ class LoginPageState extends State<LoginPage> {
           //Tengo una opcion por estado
           switch (state) {
             case LoginInitial():
-              //REVISAR PARA VER QUE DEBERIA RECIBIR O HACER EL INITIAL Y EL SUCCESS
               return LoginForm(
                 usernameController: _usernameController,
                 passwordController: _passwordController,

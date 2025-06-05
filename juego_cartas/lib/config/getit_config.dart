@@ -1,9 +1,11 @@
 import 'package:juego_cartas/features/home/config/home_get_it.dart';
+import 'package:juego_cartas/features/local_storage/config/local_storage_get_it.dart';
 import 'package:juego_cartas/features/login/config/login_get_it.dart';
 
 void configureGetItApp() {
   homeConfigure();
   loginConfigure();
+  localStorageConfigure();
   //Aqui van todas las configuraciones
   // getLocationsConfigure();
   // getEpisodesConfigure();

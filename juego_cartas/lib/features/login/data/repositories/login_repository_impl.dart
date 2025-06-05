@@ -14,7 +14,7 @@ class LoginRepositoryImpl implements LoginRepository {
   //Aqui creo que lo que deberia devolver es una respuesta login. Welcome
 
   @override
-  Future<Either<Failure, Welcome>> getAutorization(
+  Future<Either<Failure, AutorizacionRespuesta>> getAutorization(
     String nombreUsuario,
     String contrasena,
     //El evento le mete estos datos? Capaz antes no hacen falta declarar?
@@ -36,7 +36,7 @@ class LoginRepositoryImpl implements LoginRepository {
 
       if (result.resultType == ResultType.success) {
         //No entiendo la diferencia entre esta y el bloc
-        final welcome = Welcome.fromJson(result.body);
+        final welcome = AutorizacionRespuesta.fromJson(result.body);
 
         return Right(welcome);
         //devuelvo el derecho

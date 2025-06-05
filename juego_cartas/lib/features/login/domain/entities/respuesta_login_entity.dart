@@ -6,22 +6,33 @@
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+import 'package:juego_cartas/features/principal/domain/entities/user_entity.dart';
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+AutorizacionRespuesta welcomeFromJson(String str) =>
+    AutorizacionRespuesta.fromJson(json.decode(str));
 
-class Welcome {
+String welcomeToJson(AutorizacionRespuesta data) => json.encode(data.toJson());
+
+class AutorizacionRespuesta {
   final String token;
   final bool resultado;
   final String msj;
+  Usuario usuario;
 
-  Welcome({required this.token, required this.resultado, required this.msj});
+  AutorizacionRespuesta({
+    required this.token,
+    required this.resultado,
+    required this.msj,
+    required this.usuario,
+  });
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-    token: json["token"],
-    resultado: json["resultado"],
-    msj: json["msj"],
-  );
+  factory AutorizacionRespuesta.fromJson(Map<String, dynamic> json) =>
+      AutorizacionRespuesta(
+        token: json["token"],
+        resultado: json["resultado"],
+        msj: json["msj"],
+        usuario: Usuario.fromJson(json["usuario"]),
+      );
 
   Map<String, dynamic> toJson() => {
     "token": token,
@@ -29,5 +40,6 @@ class Welcome {
     // es true o false
     "msj": msj,
     //Usuario autorizado o no
+    "usuario": usuario.toJson(),
   };
 }

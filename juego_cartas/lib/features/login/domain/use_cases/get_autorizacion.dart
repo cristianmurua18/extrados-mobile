@@ -13,7 +13,7 @@ class GetAutorizacionUseCase {
   //Luego a futuro, con iny dep lo inyecto
   GetAutorizacionUseCase({required this.repository});
 
-  Future<Either<Failure, Welcome>> call(
+  Future<Either<Failure, AutorizacionRespuesta>> call(
     String nombreUsuario,
     String contrasena,
   ) {
