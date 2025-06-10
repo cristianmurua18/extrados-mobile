@@ -11,33 +11,43 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
   static const _tokenKey = 'jwt_token';
 
   @override
-  Future<Either<Failure, String>> getToken(
-    //El evento le mete estos datos? Capaz antes no hacen falta declarar?
-  ) async {
-    //Llamada a la API
+  Future<Either<Failure, String>> getToken() async {
     final token = sharedPreferences.getString(_tokenKey);
-
     if (token == null) {
       return Left(NotFoundFailure('Lo siento, no se encontro el token.'));
+      //Devuelve el izquierdo
     }
-
     return Right(token);
     //devuelvo el derecho
   }
 
   @override
-  Future<Either<Failure, void>> clearToken() async {
+  Future<Either<Failure, bool>> clearToken() async {
     try {
-      await sharedPreferences.remove(_tokenKey);
-      return Right(null);
+      final resp = await sharedPreferences.remove(_tokenKey);
+      return Right(resp);
     } catch (e) {
       return Left(NotFoundFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, String>> hasToken() {
-    // TODO: implement hasToken
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> hasToken() async {
+    try {
+      final resp = await sharedPreferences.remove(_tokenKey);
+      return Right(resp);
+    } catch (e) {
+      return Left(NotFoundFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> saveToken(token) async {
+    try {
+      final resp = await sharedPreferences.setString(_tokenKey, token);
+      return Right(resp);
+    } catch (e) {
+      return Left(NotFoundFailure(e.toString()));
+    }
   }
 }

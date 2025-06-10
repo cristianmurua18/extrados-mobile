@@ -12,7 +12,7 @@ class HasTokenUseCase {
   //Luego a futuro, con iny dep lo inyecto
   HasTokenUseCase({required this.repository});
 
-  Future<Either<Failure, String>> call() {
+  Future<Either<Failure, bool>> call() {
     return repository.hasToken();
   }
 }
