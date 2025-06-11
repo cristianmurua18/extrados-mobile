@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:juego_cartas/features/home/presentation/page/home.dart';
 import 'package:juego_cartas/features/login/presentation/page/login.dart';
 import 'package:juego_cartas/features/login/presentation/widgets/sing_up_form.dart';
-import 'package:juego_cartas/features/principal/presentation/page/principal.dart';
 import 'package:juego_cartas/features/principal/presentation/widgets/inscripcion_torneos.dart';
 import 'package:juego_cartas/features/principal/presentation/widgets/mazos.dart';
 import 'package:juego_cartas/features/principal/presentation/widgets/perfil.dart';
@@ -27,7 +26,6 @@ final GoRouter routerApp = GoRouter(
     ),
 
     GoRoute(
-      //NO LA USO MAS DESDE AQUI
       path: '/registro',
       builder: (BuildContext context, GoRouterState state) {
         return const RegistroJugadorForm();

@@ -3,6 +3,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:juego_cartas/core/error/failure_base.dart';
+import 'package:juego_cartas/features/principal/domain/entities/mazo_entity.dart';
 import 'package:juego_cartas/features/principal/domain/entities/user_entity.dart';
 
 abstract class PrincipalRepository {
@@ -12,7 +13,7 @@ abstract class PrincipalRepository {
   Future<Either<Failure, Usuario>> getMisDatos();
 
   //Metodo para ver los mazos de jugador
-  Future<Either<Failure, bool>> getMazos();
+  Future<Either<Failure, List<MazoEntity>>> getMazos();
 
   Future<Either<Failure, bool>> registroATorneo();
 }
