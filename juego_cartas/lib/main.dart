@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:juego_cartas/commons/routes.dart';
 import 'package:juego_cartas/config/getit_config.dart';
 import 'package:juego_cartas/features/home/presentation/bloc/Torneos/torneos_bloc.dart';
+import 'package:juego_cartas/features/login/domain/use_cases/get_autorizacion.dart';
+import 'package:juego_cartas/features/login/domain/use_cases/sign_up.dart';
 import 'package:juego_cartas/features/login/presentation/bloc/login/login_bloc.dart';
 
 void main() {
@@ -22,7 +24,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => TorneosBloc(GetIt.instance.get())),
-        BlocProvider(create: (_) => LoginBloc(GetIt.instance.get())),
+        BlocProvider(
+          create:
+              (_) => LoginBloc(
+                GetIt.instance.get<GetAutorizacionUseCase>(),
+                GetIt.instance.get<SignUpUseCase>(),
+              ),
+        ),
       ],
 
       child: FutureBuilder(

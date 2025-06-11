@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:juego_cartas/core/error/failure_base.dart';
 
 abstract class LocalStorageRepository {
+  
   //Devuelve el token
   Future<Either<Failure, String>> getToken();
 

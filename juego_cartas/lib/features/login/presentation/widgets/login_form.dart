@@ -70,6 +70,24 @@ class LoginForm extends StatelessWidget {
               ),
             ],
           ),
+          // Nuevo botón de registro
+          const SizedBox(height: 20.0),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                routerApp.go(
+                  '/registro',
+                ); // Asegúrate que esta ruta esté definida
+              },
+              child: const Text(
+                '¿No tienes cuenta? Regístrate',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: Colors.blueAccent,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

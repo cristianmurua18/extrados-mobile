@@ -5,15 +5,13 @@ import 'package:juego_cartas/features/local_storage/domain/use_cases/clear_token
 import 'package:juego_cartas/features/local_storage/domain/use_cases/get_token.dart';
 import 'package:juego_cartas/features/local_storage/domain/use_cases/has_token.dart';
 import 'package:juego_cartas/features/local_storage/domain/use_cases/save_token.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void localStorageConfigure() {
+void localStorageConfigure() async {
   //SERIA ASINCRONO? NO
+  final sharedPreferences = await SharedPreferences.getInstance();
 
-  //Faltaria el Bloc? NO. Se inyecta en el main
-
-  //Api service
-  //GetIt.instance.registerLazySingleton<ApiService>(() => ApiService(dioClient));
-
+  GetIt.instance.registerSingleton<SharedPreferences>(sharedPreferences);
   //Repository y su implementacion
   GetIt.instance.registerLazySingleton<LocalStorageRepository>(
     () => LocalStorageRepositoryImpl(sharedPreferences: GetIt.instance.get()),
